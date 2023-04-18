@@ -8,6 +8,7 @@ node {
         // Run the tests
         sh ''
     }
+    
     stage('Deploy') {
         // Deploy the application
         sh ''
