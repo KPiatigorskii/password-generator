@@ -57,7 +57,7 @@ node {
                 }
             }  
             if (password.length() >= password_length.toInteger()
-                && password..toString().matches("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*")) {
+                && password.toString().matches("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*")) {
                 echo "Generated Password: ${password}"
                 break
             }
