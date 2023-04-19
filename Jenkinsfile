@@ -28,6 +28,59 @@
 
 
 node {
+    stage('generate password with multithread'){
+        types = ['lowercase', 'uppercase', 'numbers']
+        lowercase = 'abcdefghijklmnopqrstuvwxyz'
+        uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        numbers = '0123456789'
+        max_attempts_value = max_attempts_value.toInteger()
+        password_length = password_length.toInteger()
+        task_array = []
+        for(int i = 1;i<max_attempts_value;i++){
+            task_array.add("task${i}")
+        }
+        def parallelTasks = tasks.parallelStream()
+        parallelTasks.each { task ->
+            println "Executing ${task}"
+            def attempts = 0
+            while(true){
+                password = new StringBuilder()
+                for(int i = 0;i<password_length;i++) {
+                    
+                    switch(getRandomCharType()) {
+                        case 'lowercase':
+                            password.append(getRandomChar(lowercase))
+                        break
+                        case 'uppercase':
+                            password.append(getRandomChar(uppercase))
+                        break
+                        case 'numbers':
+                            password.append(getRandomChar(numbers))
+                        break
+                        default:
+                            
+                        break
+                    }
+                }  
+                if (password.length() >= password_length.toInteger()
+                    && password.toString().matches("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*")) {
+                    echo "Generated Password: ${password}"
+                    break
+                }
+                println password
+                attempts++
+                if (attempts >= max_attempts_value.toInteger()) {
+                    echo password
+                    currentBuild.result = "FAILURE"
+                    throw new Exception("Failed to generate a strong password after ${max_attempts_value} attempts.")
+                    break
+                }
+            }
+        }
+        
+    }
+    
+    }
     stage('generate password') {
         types = ['lowercase', 'uppercase', 'numbers']
         lowercase = 'abcdefghijklmnopqrstuvwxyz'
