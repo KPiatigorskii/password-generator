@@ -74,6 +74,9 @@ node {
     stage('store password'){
         storePassword(password,"pass.txt")
     }
+    stage("show password strong meter"){
+        ShowPassStrenghtMeter(password)
+    }
 }
 
 def getRandomCharType(){
@@ -94,4 +97,14 @@ def storePassword(password, file) {
         error("Password ${password} is already in file")
     }
     historyFile.append("${password}\n")
+}
+
+def ShowPassStrenghtMeter(password){
+    if ( password.length() < 5){
+        echo "password is weak"
+    } else if (password.length() > 5 && password.length() < 10){
+        echo "password is fair"
+    } else if (password.length() > 5 && password.length() < 10){
+        echo "password is strong"   
+    }
 }
