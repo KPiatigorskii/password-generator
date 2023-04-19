@@ -12,17 +12,12 @@
 // Once a strong password is generated, the script prints the password to the console. 
 
 // (This script can be used to generate secure passwords in various contexts, such as in a shell script or as part of an application.)
-
 // __________________________________________________________________________________________________________
 
 // BONUS:
 
 // Add Password strength meter: Add a step to display a password strength meter to the user.
-
-
 // Password history: Add a step to store the generated password in a password history, preventing the user from using the same password again in the future.
-
-
 // Multi-threading: Add support for generating multiple passwords in parallel using multi-threading, reducing the time it takes to generate multiple passwords.
 
 
@@ -152,6 +147,7 @@ def storePassword(password, file) {
 }
 
 def ShowPassStrenghtMeter(password){
+    echo "password ${password.length()}"
     if ( password.length() < 5){
         echo "password is weak"
     } else if (password.length() > 5 && password.length() < 10){
@@ -160,3 +156,4 @@ def ShowPassStrenghtMeter(password){
         echo "password is strong"   
     }
 }
+// Konstantin Piatigorskii
