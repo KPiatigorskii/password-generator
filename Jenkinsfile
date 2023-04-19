@@ -33,8 +33,8 @@ node {
         lowercase = 'abcdefghijklmnopqrstuvwxyz'
         uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         numbers = '0123456789'
-        // limit = 4
-        // password_length = 4
+        max_attempts_value = max_attempts_value.toInteger()
+        password_length = password_length.toInteger()
 
         def attempts = 0
         while(true){
