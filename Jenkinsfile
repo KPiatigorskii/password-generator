@@ -38,7 +38,7 @@ node {
 
         def attempts = 0
         while(true){
-            password = ''
+            password = new StringBuilder()
             for(int i = 0;i<password_length;i++) {
                 
                 switch(getRandomCharType()) {
@@ -57,7 +57,7 @@ node {
                 }
             }  
             if (password.length() >= password_length.toInteger()
-                && password.matches("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*")) {
+                && password..toString().matches("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*")) {
                 echo "Generated Password: ${password}"
                 break
             }
