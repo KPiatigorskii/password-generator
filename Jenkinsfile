@@ -33,8 +33,8 @@ node {
         lowercase = 'abcdefghijklmnopqrstuvwxyz'
         uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         numbers = '0123456789'
-        limit = 4
-        password_length = 4
+        // limit = 4
+        // password_length = 4
 
         def attempts = 0
         while(true){
@@ -63,9 +63,9 @@ node {
             }
             println password
             attempts++
-            if (attempts >= limit.toInteger()) {
+            if (attempts >= max_attempts_value.toInteger()) {
                 echo password
-                echo "Failed to generate a strong password after ${limit} attempts."
+                echo "Failed to generate a strong password after ${max_attempts_value} attempts."
                 break
             }
         }
