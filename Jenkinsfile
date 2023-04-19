@@ -71,6 +71,9 @@ node {
             }
         }
     }
+    stage('store password'){
+        storePassword(password,"pass.txt")
+    }
 }
 
 def getRandomCharType(){
@@ -79,4 +82,16 @@ def getRandomCharType(){
 
 def getRandomChar(array){
     return array[Math.abs(new Random().nextInt() % array.size())]
+}
+
+def storePassword(password, file) {
+    def historyFile = new File(file)
+    if (!historyFile.exists()) {
+        historyFile.createNewFile()
+    }
+    def history = historyFile.text
+    if (history.contains(password)) {
+        error("Password ${password} is already in file")
+    }
+    historyFile.append("${password}\n")
 }
