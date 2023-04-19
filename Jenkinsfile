@@ -39,7 +39,7 @@ node {
         for(int i = 1;i<max_attempts_value;i++){
             task_array.add("task${i}")
         }
-        def parallelTasks = tasks.parallelStream()
+        def parallelTasks = task_array.parallelStream()
         parallelTasks.each { task ->
             println "Executing ${task}"
             def attempts = 0
