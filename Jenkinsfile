@@ -79,8 +79,7 @@ node {
         }
         
     }
-    
-    }
+
     stage('generate password') {
         types = ['lowercase', 'uppercase', 'numbers']
         lowercase = 'abcdefghijklmnopqrstuvwxyz'
