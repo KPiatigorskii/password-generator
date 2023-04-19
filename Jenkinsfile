@@ -43,13 +43,13 @@ node {
                 
                 switch(getRandomCharType()) {
                     case 'lowercase':
-                        password += getRandomChar(lowercase)
+                        password.append(getRandomChar(lowercase))
                     break
                     case 'uppercase':
-                        password += getRandomChar(uppercase)
+                        password.append(getRandomChar(uppercase))
                     break
                     case 'numbers':
-                        password += getRandomChar(numbers)
+                        password.append(getRandomChar(numbers))
                     break
                     default:
                         
