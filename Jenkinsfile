@@ -36,13 +36,6 @@ node {
         limit = 4
         password_length = 4
 
-        def getRandomCharType(){
-            return types[Math.abs(new Random().nextInt() % 3)]
-        }
-
-        def getRandomChar(array){
-            return array[Math.abs(new Random().nextInt() % array.size())]
-        }
         def attempts = 0
         while(true){
             password = ''
@@ -77,4 +70,12 @@ node {
             }
         }
     }
+}
+
+def getRandomCharType(){
+    return types[Math.abs(new Random().nextInt() % 3)]
+}
+
+def getRandomChar(array){
+    return array[Math.abs(new Random().nextInt() % array.size())]
 }
