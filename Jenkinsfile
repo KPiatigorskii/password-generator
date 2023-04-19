@@ -148,11 +148,11 @@ def storePassword(password, file) {
 
 def ShowPassStrenghtMeter(password){
     echo "password ${password.length()}"
-    if ( password.length() < 5){
+    if ( password.length() <= 5){
         echo "password is weak"
-    } else if (password.length() > 5 && password.length() < 10){
+    } else if (password.length() > 5 && password.length() <= 10){
         echo "password is fair"
-    } else if (password.length() > 5 && password.length() < 10){
+    } else if (password.length() > 10 && password.length() < 15){
         echo "password is strong"   
     }
 }
