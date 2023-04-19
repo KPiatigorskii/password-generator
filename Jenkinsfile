@@ -65,7 +65,8 @@ node {
             attempts++
             if (attempts >= max_attempts_value.toInteger()) {
                 echo password
-                echo "Failed to generate a strong password after ${max_attempts_value} attempts."
+                currentBuild.result = "FAILURE"
+                throw new Exception("Failed to generate a strong password after ${max_attempts_value} attempts.")
                 break
             }
         }
