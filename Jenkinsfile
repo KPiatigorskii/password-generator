@@ -137,7 +137,7 @@ def getRandomChar(array){
 def storePassword(password, file) {
     def historyFile = new File(file)
     if (!historyFile.exists()) {
-        historyFile.createNewFile()
+        historyFile.createNФewFile()
     }
     def history = historyFile.text
     if (history.contains(password)) {
@@ -147,7 +147,6 @@ def storePassword(password, file) {
 }
 
 def ShowPassStrenghtMeter(password){
-    echo "password ${password.length()}"
     if ( password.length() <= 5){
         echo "password is weak"
     } else if (password.length() > 5 && password.length() <= 10){
